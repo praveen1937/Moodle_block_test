@@ -1,1 +1,71 @@
-Hi I have developed a sample test file in Articulate Storyline 2 and published it as SCORM 1.2 which don't seem to call the right function call ( LMSSetValue cmi.core.score.raw ) in Moodle LMS. In order to pass the score value to Moodle, i used the following JS code in a trigger on timeline start at end of quiz : /*Get player to reference*/ var player = GetPlayer(); /*get LMS API*/ var lmsAPI = parent; /*set score; the first number is the score*/ lmsAPI.SetScore(player.GetVar("14543GameScore"), 100, 0); /*set status; possible values: "completed","incomplete", "failed", "passed"*/ if (player.GetVar("14543GameScore")>= player.GetVar("14543PassingPercentage")) { SetStatus("passed"); } else { SetStatus("failed"); } I published it as SCORM 1.2 course with following settings : Report Status to LMS : Passed / Failed Track using number of slides viewed Include HTML5 output (for mobile devices) After uploading it to Moodle as SCORM 1.2 package, it can't pass score value and status to Moodle on mobile devices only. But same course passes score and status to Moodle on desktop. So, i tested it on SCORM Cloud to identify any issue with my course. To my surprise, it can easily pass score and status to SCORM Cloud on mobile devices as well as desktop. I have tested with Moodle 2.6.5 and 3.1 with debugging and API Activity Log enabled. I noticed in the log it can't call the LMSSetValue (cmi.core.score.raw, min and max) on mobile devices. I have also attached the Articulate Storyline 2 course file (.story) , published output as SCORM 1.2 and Moodle API Activity Log. Kindly help me fix this issue asap.
+Providing facility for admin user to restrict access to External User Group.
+
+Background: 
+
+
+As per the customized code currently, any user who has the role of a 'Learner / Student' is auto enrolled and can view all Categories;
+the Courses and Activities under the courses, maneuvering through the Left hand menu.
+
+They can also add comments and open a discussion, if the option is allowed for the course; reply to comments made etc.
+
+Client now has 2 custom users who were external and had to be allowed to see only one course in a specific category. Due to shortage of time, this was hard coded and access given.
+
+
+
+Requirement:
+
+The requirement thus is to restructure and provide users who have been assigned an Admin role, the flexibility to restrict the default access for a select group of 
+users. Admin needs to have the rights to Sepeciy which courses can be viewed by these users.
+
+This set of users are external and might be allowed to view only some courses in a specific category etc. and cannot add comments for discussion or view existing discussions etc.
+
+Admin needs to be able to restrict this from the back end.
+
+
+Deliverables :
+
+Completed code ( following moodle coding best practices) committed to respective GIT repository provided and Code Review Checklist duly filled.
+
+If required we can provide access to a To view the current application can
+
+
+Do email if you require any clarifications. Also confirm if this can be taken up. If so we can provide:
+
+-	A centric email id
+-	Access to GIT repository
+-	Access to AWS Dev. Instance to start work on, which has updated code etc.
+
+
+
+
+
+A new role needs to be created called "External Student". There access is restricted to access activities. They are not auto enrolled in any courses. 
+
+External Users are created and assigned "External Student role" outside of this plugin 
+
+A new plugin will be developed :
+
+This will have an option to list all the "External Student" as well as All the Courses with Categories.
+
+Admin can choose set of users from the list and enroll them with some courses ( Bulk Enrollment)
+
+These users will have access to view the course and they will not be able to view / participate on any activities.
+
+
+
+
+
+What is the version of Moodle you are using? and I need to access the source code. 
+
+
+
+
+
+
+
+
+
+This plugin list the External Users 
+
+
+
